@@ -26,6 +26,7 @@ This repository contains the experiments reported in the paper. Nothing here com
 | `results/run20_noise_hand_verdicts.csv`, `results/noise_statement_verdicts.csv`, `results/noimage_hand_verdicts.csv` | Radiologist's classifications for the original wording |
 | `results/v011_tables.txt` | Output of `33_tables_v011.py` as used for the paper |
 | `results/v011_effect_size.txt` | Output of `34_effect_size_v011.py`: Youden's J with patient-level bootstrap 95% CIs, and differences in accuracy between base and fine-tuned models |
+| `results/v011_power.txt` | Output of `36_power_v011.py`: simulated power of the Fisher test for 39 nodules and 54 vessels (Methods, sample size) |
 | `results/v011_acquisition.txt` | Output of `35_acquisition_v011.py`: scanner model, reconstruction kernel, and tube current of the 48 scans (Table 1; needs the DICOM files) |
 | `figs/` | Figure 1, Figure 2 (`fig2_v011_roc`), and the scripts for Figure 2 |
 | `MODELS.md` | Model files, checksums, and software versions |

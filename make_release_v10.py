@@ -14,7 +14,7 @@ def cp(src,dst=None):
 CODE=['lidc_compat.py','lidc_render.py','01_build_candidate_pool.py','02_select_mini_batch.py','03_download_series.py',
  '05_render_nodules.py','06_find_foils.py','07_make_nodule_qa_sheet.py','08_select_foils.py','09_render_foils.py','20_build_control_stimuli.py',
  'run_roi_batch.py','run_roi_batch_hf.py','run_frontier.py','21_run_control_logprob.py','27_run_noimg_fulltext.py',
- '28_reanalysis_v10.py','29_table3_and_audit.py','30_analyze_run22.py','31_analyze_run23.py','33_tables_v011.py','34_effect_size_v011.py','35_acquisition_v011.py',
+ '28_reanalysis_v10.py','29_table3_and_audit.py','30_analyze_run22.py','31_analyze_run23.py','33_tables_v011.py','34_effect_size_v011.py','35_acquisition_v011.py','36_power_v011.py',
  'archive_verify_models.py','redact_raw.py','make_release_v10.py']
 for f in CODE: cp(f)
 cp('figs/make_fig2_v09.py'); cp('figs/make_fig2_v011_roc.py')
@@ -38,7 +38,7 @@ fr=filt('frontier_results.csv',lambda r: r['run_tag'] in T(COM,['_LIDC_N9','_LID
 fc=filt('frontier_control_results.csv',lambda r: r['run_tag'] in T(COM,['_LIDC_CTL','_LIDC_CTLswap','_LIDC_CTLnoimg','_LIDC_CTLnoimgswap']) and not r['patch_id'].startswith('ctl_blank'))
 filt('control_stimuli_results.csv',lambda r: r['run_tag'] in T(OPEN,['_CTL_N9','_CTL_N9swap']) and r['patch_id'].startswith('ctl_noise'))
 # control_results.csv（只有第一個 token）不附；no-image 以 control_noimg_fulltext.csv 的完整回覆為準
-for f in ['control_noimg_fulltext.csv','run20_noise_hand_verdicts.csv','noise_statement_verdicts.csv','noimage_hand_verdicts.csv','v10_reanalysis.txt','run22_prompt_open.csv','run22_prompt_frontier.csv','run23_noise_open.csv','run23_noimg_open.csv','run23_control_frontier.csv','run23_retest_frontier.csv','run23_noise_noimg_hand_verdicts.csv','run23_noise_statement_verdicts.csv','v011_tables.txt','v011_effect_size.txt','v011_acquisition.txt','run22_report.txt','run23_report.txt']: cp('results/'+f)
+for f in ['control_noimg_fulltext.csv','run20_noise_hand_verdicts.csv','noise_statement_verdicts.csv','noimage_hand_verdicts.csv','v10_reanalysis.txt','run22_prompt_open.csv','run22_prompt_frontier.csv','run23_noise_open.csv','run23_noimg_open.csv','run23_control_frontier.csv','run23_retest_frontier.csv','run23_noise_noimg_hand_verdicts.csv','run23_noise_statement_verdicts.csv','v011_tables.txt','v011_effect_size.txt','v011_acquisition.txt','v011_power.txt','run22_report.txt','run23_report.txt']: cp('results/'+f)
 for f in ['run22_prompts.json','subset_v010_93.txt','subset_retest44.txt','subset_noise20.txt']: cp('manifest/'+f)
 fr=fr+RD('results/run22_prompt_frontier.csv')+RD('results/run23_retest_frontier.csv'); fc=fc+RD('results/run23_control_frontier.csv')
 # 4 commercial 原始封存（只留上面保留的呼叫）
