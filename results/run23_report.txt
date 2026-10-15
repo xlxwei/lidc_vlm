@@ -1,0 +1,41 @@
+run 23 分析（新 prompt v5nd／v5ndswap）。列數：noise open 280 | noimg open 14 | control frontier 180 | retest frontier 264
+
+== 0 稽核：第一個字 ==
+A+E 共 544 筆，第一個字不是 Nodule/Vessel 或與 parser 不一致：0
+B 共 14 筆，第一個字不是 Nodule/Vessel：0
+prompt_sha1: {'958c37a4c6de': 369, '666ec3e5d79b': 369}
+
+== 1 Open-weight noise（20 組）與 no image：新 prompt vs 舊 prompt ==
+Qwen3-VL 4B      NF noise new {'nodule': 20} | old {'nodule': 20} | 含nois字樣 0 | no image new ['nodule'] old ['nodule']
+Qwen3-VL 4B      VF noise new {'vessel': 20} | old {'vessel': 20} | 含nois字樣 0 | no image new ['vessel'] old ['vessel']
+Qwen3-VL 8B      NF noise new {'vessel': 20} | old {'vessel': 20} | 含nois字樣 0 | no image new ['vessel'] old ['vessel']
+Qwen3-VL 8B      VF noise new {'vessel': 20} | old {'vessel': 20} | 含nois字樣 0 | no image new ['vessel'] old ['vessel']
+Qwen2.5-VL 7B    NF noise new {'nodule': 20} | old {'nodule': 20} | 含nois字樣 0 | no image new ['nodule'] old ['nodule']
+Qwen2.5-VL 7B    VF noise new {'nodule': 20} | old {'nodule': 20} | 含nois字樣 0 | no image new ['nodule'] old ['nodule']
+Lingshu-7B       NF noise new {'vessel': 20} | old {'vessel': 20} | 含nois字樣 0 | no image new ['vessel'] old ['vessel']
+Lingshu-7B       VF noise new {'vessel': 20} | old {'vessel': 20} | 含nois字樣 0 | no image new ['nodule'] old ['nodule']
+Gemma 3 4B       NF noise new {'vessel': 20} | old {'vessel': 20} | 含nois字樣 0 | no image new ['vessel'] old ['vessel']
+Gemma 3 4B       VF noise new {'vessel': 17, 'nodule': 3} | old {'nodule': 20} | 含nois字樣 0 | no image new ['nodule'] old ['nodule']
+MedGemma 1 4B    NF noise new {'vessel': 20} | old {'vessel': 20} | 含nois字樣 0 | no image new ['vessel'] old ['vessel']
+MedGemma 1 4B    VF noise new {'vessel': 20} | old {'vessel': 20} | 含nois字樣 0 | no image new ['vessel'] old ['vessel']
+MedGemma 1.5 4B  NF noise new {'vessel': 20} | old {'vessel': 20} | 含nois字樣 0 | no image new ['vessel'] old ['vessel']
+MedGemma 1.5 4B  VF noise new {'vessel': 20} | old {'nodule': 20} | 含nois字樣 0 | no image new ['vessel'] old ['vessel']
+
+== 2 Commercial noise（20 組）與 no image（每序 10 次）：初判，非正式 ==
+GPT-5.6          NF noise n=20 初判 {'nodule': 2, 'vessel': 18} | 舊（Wei 判定）{'vessel': 19, 'nodule': 1} | 含nois字樣 0 | no image n=10 初判 {'declined?': 10}
+GPT-5.6          VF noise n=20 初判 {'nodule': 4, 'vessel': 16} | 舊（Wei 判定）{'vessel': 17, 'nodule': 3} | 含nois字樣 0 | no image n=10 初判 {'declined?': 9, '?': 1}
+Gemini 3.1 Pro   NF noise n=20 初判 {'nodule': 18, '?': 1, 'vessel': 1} | 舊（Wei 判定）{'nodule': 12, 'vessel': 8} | 含nois字樣 8 | no image n=10 初判 {'declined?': 10}
+Gemini 3.1 Pro   VF noise n=20 初判 {'nodule': 20} | 舊（Wei 判定）{'nodule': 16, 'vessel': 4} | 含nois字樣 6 | no image n=10 初判 {'declined?': 10}
+Claude Fable 5   NF noise n=20 初判 {'nodule': 10, 'vessel': 10} | 舊（Wei 判定）{'nodule': 10, 'vessel': 8, 'declined': 2} | 含nois字樣 12 | no image n=10 初判 {'declined?': 4, 'nodule': 6}
+Claude Fable 5   VF noise n=20 初判 {'vessel': 8, 'nodule': 12} | 舊（Wei 判定）{'nodule': 5, 'vessel': 11, 'declined': 4} | 含nois字樣 5 | no image n=10 初判 {'nodule': 5, 'declined?': 5}
+
+== 3 Commercial 重測 44 題（新 prompt）：rep1 = run 22，rep2 = run 23 ==
+GPT-5.6          NF 相同 40/44（nodule 15/19，vessel 25/25） | VF 相同 42/44（nodule 17/19，vessel 25/25） | 兩序之間相同 42/44 | 舊 prompt NF 重測相同 38/44
+Gemini 3.1 Pro   NF 相同 38/44（nodule 17/19，vessel 21/25） | VF 相同 37/44（nodule 18/19，vessel 19/25） | 兩序之間相同 31/44 | 舊 prompt NF 重測相同 41/44
+Claude Fable 5   NF 相同 40/44（nodule 17/19，vessel 23/25） | VF 相同 37/44（nodule 16/19，vessel 21/25） | 兩序之間相同 34/44 | 舊 prompt NF 重測相同 35/44
+
+== 4 費用 ==
+GPT-5.6          $2.46
+Gemini 3.1 Pro   $4.36
+Claude Fable 5   $4.86
+合計 $11.68

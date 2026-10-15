@@ -1,0 +1,176 @@
+{
+ "request": {
+  "vendor": "google",
+  "model": "gemini-3.1-pro-preview",
+  "variant": "v5ndswap",
+  "prompt": "These are 9 consecutive axial slices (superior to inferior, 1.25 mm spacing) from a chest CT, cropped to a 64 mm field of view centred on one structure in the lung. Is the structure at the centre of the images a cross-section of a blood vessel or a pulmonary nodule? Answer with one word, Vessel or Nodule, then one short sentence of reasoning, then the estimated diameter in mm.",
+  "prompt_sha1": "666ec3e5d79b",
+  "config": {
+   "effort": "medium",
+   "max_out": 8192,
+   "temp": 0.0,
+   "seed": 1,
+   "media_resolution": "MEDIA_RESOLUTION_HIGH"
+  },
+  "no_image": false,
+  "n_images": 9,
+  "images": [
+   {
+    "path": "patches/roi_patches_gray_N9/nod_LIDC-IDRI-0549_n05/roi_1.png",
+    "sha256": "2934704959a4d6aa3740c6cfa4c4abcbdb5a69ba1e1dff8e6e73ef63778f4bb7"
+   },
+   {
+    "path": "patches/roi_patches_gray_N9/nod_LIDC-IDRI-0549_n05/roi_2.png",
+    "sha256": "5b35c787619fcc109d8822f25d8520ca905ed23e3b877d596abb68881c96d7b1"
+   },
+   {
+    "path": "patches/roi_patches_gray_N9/nod_LIDC-IDRI-0549_n05/roi_3.png",
+    "sha256": "421aff4d558681f2a963fbfc87ce3820a3a5660d7f7d9146ead3fab19d4c3747"
+   },
+   {
+    "path": "patches/roi_patches_gray_N9/nod_LIDC-IDRI-0549_n05/roi_4.png",
+    "sha256": "c58fa837190679437f648eec17d0301d4886546b18e1cdf3bb6967f8315a2fb6"
+   },
+   {
+    "path": "patches/roi_patches_gray_N9/nod_LIDC-IDRI-0549_n05/roi_5.png",
+    "sha256": "0a42b07fedbca7db16b435dc5f1853d5752071e4ee858b843b3856824c0ae53f"
+   },
+   {
+    "path": "patches/roi_patches_gray_N9/nod_LIDC-IDRI-0549_n05/roi_6.png",
+    "sha256": "0bc2c83ec721c6659bc2225e50d34f15d788bc76ac2a3e8ee4132683eae516ec"
+   },
+   {
+    "path": "patches/roi_patches_gray_N9/nod_LIDC-IDRI-0549_n05/roi_7.png",
+    "sha256": "866c7f2babe9e5f38dd6de5c4ba25bbf85a58801eef5e634ddf3fb0f0f673669"
+   },
+   {
+    "path": "patches/roi_patches_gray_N9/nod_LIDC-IDRI-0549_n05/roi_8.png",
+    "sha256": "cd06b293c43cd32f451b361f476dce09c15c0ec8ababd9fc0cc0665416a4b84e"
+   },
+   {
+    "path": "patches/roi_patches_gray_N9/nod_LIDC-IDRI-0549_n05/roi_9.png",
+    "sha256": "391a6e4407cf9c74e99808e8c8d3c29be5f95818032e7bb8c6b6fb1ae42bb417"
+   }
+  ]
+ },
+ "response": {
+  "sdk_http_response": {
+   "headers": {
+    "x-gemini-service-tier": "standard",
+    "content-type": "application/json; charset=UTF-8",
+    "vary": "Origin, X-Origin, Referer",
+    "content-encoding": "gzip",
+    "date": "Mon, 05 Oct 2026 19:00:22 GMT",
+    "server": "scaffolding on HTTPServer2",
+    "x-xss-protection": "0",
+    "x-frame-options": "SAMEORIGIN",
+    "x-content-type-options": "nosniff",
+    "server-timing": "gfet4t7; dur=10407",
+    "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+    "transfer-encoding": "chunked"
+   },
+   "body": null
+  },
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "media_resolution": null,
+       "code_execution_result": null,
+       "executable_code": null,
+       "file_data": null,
+       "function_call": null,
+       "function_response": null,
+       "inline_data": null,
+       "text": "**My Assessment of the CT Slices**\n\nOkay, so the task is to pinpoint the central structure within these CT slices. Initially, I saw a small, round opacity within the lung parenchyma. Let's backtrack and meticulously review the images. Slice 1 and 2 are clear. In slice 3, a small dot appears near the center, and it grows slightly larger and becomes more distinct in slices 4 and 5. By slice 6, the dot becomes smaller, and it disappears completely or fades significantly by slice 7, and is gone in subsequent slices 8 and 9.\n\nMy immediate thought is that this appearance and disappearance across just a few slices, let's say about 4-5 slices at 1.25mm each (around 5-6mm total), is very suggestive of a pulmonary nodule. A blood vessel, in contrast, would typically maintain its tubular form across many more slices, possibly branching or changing orientation, but not just appearing and then vanishing as a discrete sphere.\n\nTo confirm, let's re-examine those slices, focusing on the changes. Slice 1 and 2: nothing. Slice 3: small opacity. Slice 4: distinct round opacity. Slice 5: distinct round opacity. Slice 6: opacity becomes smaller. Slice 7: opacity is gone. Yes, this is most likely a nodule.\n\nNow, let's estimate the nodule's diameter. It looks largest in slices 4 or 5. Let's estimate it relative to the 64mm Field of View (FOV). Judging by eye, it appears to be approximately 1/10th to 1/15th of the FOV. 64mm / 15 comes out to around 4.2mm. So, I would estimate the diameter at roughly 3-5 mm. I'll estimate 4mm for now.\n\nThe reasoning is that the structure appears as a discrete, roughly spherical opacity that appears and disappears over a few slices without continuing as a tubular structure.\n\nIn conclusion, I'd say the structure is a nodule. The diameter is approximately ~4 mm. I can confidently state that the structure is a discrete, roughly spherical opacity that appears and disappears over a few slices without continuing as a tubular structure.\n\n\n",
+       "thought": true,
+       "thought_signature": null,
+       "video_metadata": null,
+       "tool_call": null,
+       "tool_response": null,
+       "part_metadata": null,
+       "audio_transcription": null
+      },
+      {
+       "media_resolution": null,
+       "code_execution_result": null,
+       "executable_code": null,
+       "file_data": null,
+       "function_call": null,
+       "function_response": null,
+       "inline_data": null,
+       "text": "Nodule\nThe structure appears as a discrete, roughly spherical opacity that is only visible on a few consecutive slices and does not continue as a tubular structure.\n4 mm",
+       "thought": null,
+       "thought_signature": "b'\\x12\\x81\\x0e\\n\\xfe\\r\\x01i\\x14}\\x13C\\xfd\\x1b\\x8e\\xe9\\x92\\xed\\xf9j\\xe6\\xdf4DE\\x80\\xef\\xb15d\\th\\x94\\xcd\\x1e)\\xe1\\x99\\xed!$\\xf5\\xc0g^\\xc8k\\xd4\\xbe\\xa4z2\\x9d\\xb2\\xaf\\xbb\\xc3\\x9a\\x9c\\x18\\xbb\\x9e+\\x1d\\xbb\\x1d\\xdd\\x91ewR\\xb6\\xd0*\\xca\\x8c\\xa6\\xf0#\\xa9\\x88\\x9b\\xfbA\\r\\xcb\\xc5\\x16\\xb0\\xcf8\\xd3u\\x1a\\x81`\\xadF-Zt\\xaf\\xc3\\xe9*\\x1e\\xbf\\x04\\x15A\\x0b+]\\xf4\\xd8\\t\\x85\\xbeF\\xff\\xeb\\x92\\x863Z\\xa3\\xd0\\xcd\\xc5\\xcd\\xa4m\\xfb.\\x0c\\xaf\\x84\\xfb\\xa7\\xe9\\xe3\\x01\\xdaj\\x92\\xd3\\xdf\\xbdb\\x15\\xbc154\\xf8\\n\\xfa=\\xb5\\x89\\x95\\x95M\\x8a\\x98\\'\\x9b\\xa0\\xea\\xe8*\\x0e3\\xf61\\x85\\xd8\\xb1`\\x9a\\x16\\x9b]\\x94<\\xb2\\xf8\\x94\\xd1\\xda9\\xdd6\\xca\\x9e\\xb9\\x9bnb\\xb9\\xe0j\\xd6\\xf6.k\\xe7\\x83s\\xdc\\xb6\\xea\\xe4\\xc5\\x18\\xf5\\x16V\\xb2\\xba\\x0bp.\\x99\\x92\\xfdJsf\\xbe}\\xb0\\x13\\xfeoGN\\xd4\\x84\\rb\\x1c\\x86\\x1f\\x89\\xceV\\xaf\\xc3\\xa5\\xcd\\x96\\xd7\\x82B\";\\xa4\\x127w\\x11~\\xec#Cx\\xa9(\\xb4z\\xe8\\x14\\xaa\\x02h\\x1d\\nSOIE\\x9cQ\\xee\\xa8%q\\x14\\x9d\\xa9\\x93\\x05\\xbf\\x1cg\\xfc\\x0e\\x9f>\\xe48\\xc6r\\xc3.\\xf0L\\x19}1\\x0b\\xd7/\\x11\\x94\\xd7\\t\\xe5\\xbf\\xf8\\xef\\xa5+\\xb7\\xf3&B-&\\x82y\\xc3\\xfeN\\xceBu\\xd1F\\x87:\\xd9o[b\\xb0\\xac\\x8b\\x08\\xb7\\x90<m\\xea\\xde\\x95>l\\x08\\xc5%TL}8\\xf1W\\xeb\\x1f\\xd5\\xc27\\x07\\xe8+\\xdd\\xfaSW\\xfe\\x1cn\\xe9\\xc2N\\x9d\\xa6\\x04\\x84\\'\\xa7\\xf3\\xd3p5^\\x0e\\x8f\\x07\\xe0[}3\\xdb>\\x9f>\\x81\\xae\\x95\\n^N\\xacm>\\t\\x9d\\xc9\\xd0\\xe9Q\\x06_o@\\xa78]\\xae\\x87^\\xda\\xdco\\x13\\x17:E\\xa3\\xce,\\xdaU\\x07d*\\x0f.\\xcfyLo,\\xf7R\\x90\\xae\\x9e\\xa2\\xa8\\xb8\\xc0\\x9c4d4\\n^q5rG\\x8f\\x89\\xb2\\x9dk\\xc3PVS\\xb3\\x8f\\xfe\\tt\\x89}kjE\\x81d\\xfa<\\x16\\xa1\\x94\\xb5\\xf3\\x94\\x00g\\x05\\xe8\\xcb\\niv\\x0f\\x12\\xbf\\xde\\x8e\\x96\\x9d\\n\\xd2\\xae\\x82*\\xd7\\x92\\xa2=\\x9a\\xf5K\\xaf\\xa6Xx=46\\xd8\\x11yN>U\\xb4Z\\xc4\\x8a2\\xb3\\r6yJG\\xb9\\r\\x0c)\\xd1}|:\\x1b\\xd7l\\xb4\\x99\\xddY\\xceF\\x99\\x04K\\xc5\\xeaK\\xb3\\xd4\\xe81\\x9d\\xc0\\xb2\\x96l\\xf9\\xff\\x91\\xb3:/\\x9a\\xee=\\x14\\xea\\xb5\\x81\\xeaU\\xe9\\xa3\\x9ea\\xcda\\x17\\x13\\xc6\\x88\\xd5C\\xe7\\x95Z\\x99I\\x95T}I\\'\\xed6\\xfc\\xaf\\xb7\\xcf\\xf4-\\xdc4\\xc4\\xc7\\x8c\\xe71\\xb6\\xea\\x1cPE\\x81F\\xe1G\\x99M\\xba\\n\\x9e\\xff\\xce\\x85\\x82iew/\\x0c\\xb3\\xc7E\\xa1\\x83\\xeb%if\\n\\xe8\\xf0\\x8e|\\xfa\\xc3\\xde;\\xb2\\\\\\xc0|Ab\\\\\\xba\\xf3\\xde\\xbb\\x9a\\xc7\\xea\\xd6\\xebza\\x9e\\xff[\\xe5\\xafc4\\tN\\xf5\\xb1\\xa2\\xf1\\x05\\x1d\\x98\\xe9\\x9b\\xe1!@\\xecB\\xe3\\x9b\\x80\\x94\\xce\\x9dI\\xe6\\x03q\\xbc(G\\x97-\\x8ca\\x18\\x88\\xd2^{\\xb7\\xd276Vd=5\\x17F\\x90-9\\x91\\xd3\\xbbc!\\xd6#\\xach$\\xd6\\xe1y5#z\\xf0\\xa8\\trX\\x9al D\\xb7\\x1fv\\xee\\\\\\xb6<\\xff\\xb5el2\\x8e?\\xa2\\x18=\\xe2\\x08LNq\\x97K\\x83Mr\\x9fH\\xce\\xf3\\xbfj9\\xe5\\xa9m\\x9cu\\xc7?\\x88\\x1d7\\xba\\xc7\\xcdH\\x1b\\x0cb\\xcd\\xd3\\xcd\\xfe\\x06\\x91\\x15\\xf8_\\xf1\\xe0E\\x86\\x15\\xa7\\x0b`\\xc9\\x0f\\xf3<QJ\\xfcT\\xee\\xc3h\\xb4\\xd6k\\xc2\\x8a\\xfbj\\x95\\x02IE\\xf2I\\xe6IUqG\\xb1\\xc9\\xce=\\x13KSTmW\\x97\\x1cwP\\xf5#\\x98\\x9b\\x1d\\xb3whS\\x1a\\x0bV\\x85\\xea<\\x12\\xda^z\\xfeF\\x1c*\\x8b\\x9cs\\xb4\\xc3g\\x17/\\xc8\\x15\\xcdk\\xa0W\\x1bh\\xe4\\xb1b\\x94\\xf7\\xee\\x98\\xec`K\\x95\\x1bAy\\xe2L\\xf6\\x9a\\x19\\x910\\xcb\\xc5\\x8a\\x18\\x9dZ\\xc2\">l\\xaa\\x00x\\xe2\\xe2\\xf0w\\xc6+\\\\\\x8eI\\xa4\\xd4a\\x8d&\\x1c\\xf9\\xb7kt\\xa8\\x1e\\x86\\xa8\\xcd\\xb0\\x9ek\\x9cK<\\x9e\\xae3\\xe7\\xbew8N\\xec5\\xcce\\xdb\\xae\\x0f\\xf1C\\xefY=\\x8b|)\\xae\\xef\\xf9N67\\x065\\x96\\x1b \\xe9e4\\xf2\\xc6\\xbf\\xdfg\\xcd\\xcf\\xf0\\xcdN\\xe2\\xf4]\\xc1\\xdf\\xf3\\xe1\\x1a=\\xdf\\xf8\\x85\\xb5jx\\x90q\\x89\\xf9\\x01=i\\xb2oS\\xe5\\'\\xba\\xb5\\xe9|\\x08Q\\x9c\\x12$Bk\\x9f\\x94\\xc4#\\x81\\x8d\\xaa\\xbe\\xf3I\\x03t3\\\\\\xa0\\xee\\xd9\\x9b\\r\\x8d\\xa3\\xdf\\x18\\xb8O\\x94\\xa5\\x91\\xae\\x11\\xa2-uH\\x07\\x84\\r\\xac\\xa1\\x84`\\x86s+\\xf8\\x17\\xa2\\x0e\\\\\\x11\"\\xec\\xa5!\\xd5\\x8bk\\x9e\\xc8RC\\xd7\\x86\\xd8\\xa1>\\xa7k\\xcd\\xd6\\x80\\x02\\x9f?L8\"\\x01;/S\\x11\"\\x15\\xfd\\x9f$x\\xfeNB\\x9b\\x87e|\\xb90.o\\x9bYf\\xed\\xe5\\xab\\x9b)pm\\xa7\\xa0I\\x12TT\\xc6%\\xb4\\x87\\xef\\xcc+\"H\\xa5\\x91\\x7f\\x92\\xb2n\\x019\\x0e\\xbf:\\xfc\\x81\\xf3_\\x1e\\xa02\\x95\\xba\\x85\\xa5\\xf5*\\xe4\\xbeC\\\\\\x05\\xe7\\xb5\\x91i\\xa1\\xa81\\xe9\\xfe\\x16\\xa7~\\x02r_\\xd0\\x81\\xac\\x8b\\x9e\"8\\xe2\\xee\\xa2\\xbf\\x16\\xe0/1\\xcb\\xd9z\\xf8\\xb4\\xc4\\xd7\\xadd\\xb7\\xe0\\x1513\\x1a\\rw!\\xfaA{\\x08\\xfd\\xafBL\\xc5qp\\'e\\xd8\\x95\\x84\"\\xbb\\xf6\\xc7\\xf5)\\x10\\x1e\\xe7\\xe8Y$\\x08 \\xdd\\x1cni\\xea\\x0c8\\xda\\x9f\\xcb\\xde\\t\\x8d\\x17\\xbe;\\x8e\\xfb\\x89\\xda\\xb7Z\\xe9\\xb8\\xb1I\\x88\\xa9\\x82\\x8a\\xbc\\x13\\xaa\\x89\\x9a\\xcd\\xfe#>\\xd6\\x9c\\xce\\xc6\\x8d\\xf9\\xe0\\xdeuO\\xcf\\xb0.\\xdf\\xe7\\xfb^\\xfe~&r\\xc1\\x85\\xfa\\xc0\\rh\\xac\\x8cOQ4\\xaf\\xd0^\\xb3\\xeb\\xac\\x0b\\xf63\\x10\\xd7t\\xd7*;\\rk]:\\xa722\\xfb\\xaf\\xd9\\xc9z\\x9aed\\xea\\x8e0\\x14\\x8d\\x12\\x88\\x94z.\\xc6\\x14Q}\\xcf\\xcd\\xeb\\xee\\x0c\\xcf\\xf99\\xd4\\xeci\\x19(\\x9aD\\x8b\\x9a\\xc2?}2\\xd5\\x089\\xb4\\x14\\xb1\\x04\\xa3dC\\xd5\\xad\\xee\\x84\\xab\\xa7\\xd3\\x916\\xbeU\\xdcUg\\x94\\xea\\'\\xb2V\\xf8\\xe3k\\x9c\\xa6G5\\x81\\x18rL>\\x0b\\xe39\\xde\\xbcQ\\xfei|\\xca\\x82\\x80\\xba\\x83\\xbe\\x05\\xdc\\xe5R\\xb2\\x03\\x9eTj*e\\x1d\\xd0\\x94\\xc4\\x8bx\\xea\\xba\\xd1\\x0fT\\xe6 \\x8b\\xe8\\xe90wjY\\x90\\xa2\\xe8B\\x94L]b\\x03\\x86\\x19\\x07\\x96\\x90\\xb0\\x08\\x05\\xff\\x80 \\x1f\\x1b/\\x10\\xf0\\xbew\\xd4\\x81\\x01LZ\\xb1\\xb9\\x7f\\xbf\\x88\\x0bY>\\x86\\xf62\\x9d\\xf0\\x1e\\xbf\\xcc\\xb4j\\xa6\\xe7\\xb8\\xf1G\\x06\\x12\\xf8\\xdd\\x14\\xbay\\xdf[\\x18l\\x1bg(T\\xaaw.\\rE\\x08\\x89\\x02\\xdb\\x92\\xb0e\\xe9\\xf5\\xbc(\\xcd\\xd1\\x9ay\\xc4\\xe4\\x9f!\\xcef\\xae=F\\xa8F\\x11\\x8d\\x88)\\xa7Y\\'+\\x96S \\xd5\\x9a]@q\\xaei\\xec\\xbc\\xfap\\x04/g\\xd9/\\xa2\\xd9\\xeb\\x15i=|\\xf4\\x84\\x8bY\\x85\\r&A\\xc5\\xf1\\xd5=(|\\xae\\xc2\\xc7\\x85\\xe2p\\x90\\xb0\\xcfS\\xc3\\x17\\x87\\xc8\\x0c~\\xb0o2\\xeeV\\x98\\x85Np\\xb2\\xdeC\\xadl\\x8b\\x8d\\x13N\\x98\\x14\\xb2\\'\\x15+\\xe3g\\xc8\\xa6\\xd5Y\\x1cly\\x99,\\xc1p\\xb1y\\x89 \\x03\\xb6\\x90\\x9e\\'\\xa4Rv\\x7f\\x11=\\xc0\\xda\\xe1\\x13\\xc0\\xe2\\x8d82\\xe8/g\\xa2\\x01v\\xdc\\xe9\\x1d\\x05W\\xd4\\x82\\xf9\\x0e\\xf1\\xcb\\xf2\\x8e(\\xed\\x8dQu\\x9d\\xf5\\xfc\\x8dp\\xa2\\x9b\\x19\\x93\\xaaq\\x8an'",
+       "video_metadata": null,
+       "tool_call": null,
+       "tool_response": null,
+       "part_metadata": null,
+       "audio_transcription": null
+      }
+     ],
+     "role": "model"
+    },
+    "citation_metadata": null,
+    "finish_message": null,
+    "token_count": null,
+    "finish_reason": "STOP",
+    "grounding_metadata": null,
+    "avg_logprobs": null,
+    "index": 0,
+    "logprobs_result": null,
+    "safety_ratings": null,
+    "url_context_metadata": null
+   }
+  ],
+  "create_time": null,
+  "model_version": "gemini-3.1-pro-preview",
+  "prompt_feedback": null,
+  "response_id": "vPPDauqsLOPMrfcPx7-qkAc",
+  "usage_metadata": {
+   "cache_tokens_details": null,
+   "cached_content_token_count": null,
+   "candidates_token_count": 34,
+   "candidates_tokens_details": null,
+   "prompt_token_count": 9892,
+   "prompt_tokens_details": [
+    {
+     "modality": "IMAGE",
+     "token_count": 9801
+    },
+    {
+     "modality": "TEXT",
+     "token_count": 91
+    }
+   ],
+   "thoughts_token_count": 462,
+   "tool_use_prompt_token_count": null,
+   "tool_use_prompt_tokens_details": null,
+   "total_token_count": 10388,
+   "traffic_type": null
+  },
+  "model_status": null,
+  "automatic_function_calling_history": [],
+  "parsed": null
+ },
+ "derived": {
+  "answer": "nodule",
+  "est_diam_mm": "4",
+  "parse_status": "ok",
+  "usage": {
+   "in": 9892,
+   "out": 496,
+   "thinking": 462,
+   "cached": 0
+  },
+  "cost_usd": 0.025736,
+  "stop_reason": "FinishReason.STOP",
+  "refusal_hard": 0,
+  "refusal_category": "",
+  "thinking_summary": "**My Assessment of the CT Slices**\n\nOkay, so the task is to pinpoint the central structure within these CT slices. Initially, I saw a small, round opacity within the lung parenchyma. Let's backtrack and meticulously review the images. Slice 1 and 2 are clear. In slice 3, a small dot appears near the center, and it grows slightly larger and becomes more distinct in slices 4 and 5. By slice 6, the dot becomes smaller, and it disappears completely or fades significantly by slice 7, and is gone in subsequent slices 8 and 9.\n\nMy immediate thought is that this appearance and disappearance across just a few slices, let's say about 4-5 slices at 1.25mm each (around 5-6mm total), is very suggestive of a pulmonary nodule. A blood vessel, in contrast, would typically maintain its tubular form across many more slices, possibly branching or changing orientation, but not just appearing and then vanishing as a discrete sphere.\n\nTo confirm, let's re-examine those slices, focusing on the changes. Slice 1 and 2: nothing. Slice 3: small opacity. Slice 4: distinct round opacity. Slice 5: distinct round opacity. Slice 6: opacity becomes smaller. Slice 7: opacity is gone. Yes, this is most likely a nodule.\n\nNow, let's estimate the nodule's diameter. It looks largest in slices 4 or 5. Let's estimate it relative to the 64mm Field of View (FOV). Judging by eye, it appears to be approximately 1/10th to 1/15th of the FOV. 64mm / 15 comes out to around 4.2mm. So, I would estimate the diameter at roughly 3-5 mm. I'll estimate 4mm for now.\n\nThe reasoning is that the structure appears as a discrete, roughly spherical opacity that appears and disappears over a few slices without continuing as a tubular structure.\n\nIn conclusion, I'd say the structure is a nodule. The diameter is approximately ~4 mm. I can confidently state that the structure is a discrete, roughly spherical opacity that appears and disappears over a few slices without continuing as a tubular structure."
+ },
+ "errors": [],
+ "elapsed_s": 10.5,
+ "timestamp": "2026-10-06T03:00:22"
+}

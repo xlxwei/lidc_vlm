@@ -1,0 +1,80 @@
+== B0 病人 ==
+nodule patients 39, vessel patients 35, overlap 26, unique total 48; vessels/patient {2: 19, 1: 16}
+
+== A 順序效應 ==
+Qwen3-VL 4B      changed 44/93 (47; 37–57)      N→V 44  V→N  0  McNemar <.001  Holm10 <.001  Holm-tier <.001
+Qwen3-VL 8B      changed 1/93 (1; 0–6)          N→V  0  V→N  1  McNemar >.99   Holm10 >.99   Holm-tier >.99
+Qwen2.5-VL 7B    changed 31/93 (33; 25–43)      N→V  0  V→N 31  McNemar <.001  Holm10 <.001  Holm-tier <.001
+Lingshu-7B       changed 25/93 (27; 19–37)      N→V  0  V→N 25  McNemar <.001  Holm10 <.001  Holm-tier <.001
+Gemma 3 4B       changed 46/93 (49; 40–59)      N→V  0  V→N 46  McNemar <.001  Holm10 <.001  Holm-tier <.001
+MedGemma 1 4B    changed 36/93 (39; 29–49)      N→V  0  V→N 36  McNemar <.001  Holm10 <.001  Holm-tier <.001
+MedGemma 1.5 4B  changed 54/93 (58; 48–68)      N→V  0  V→N 54  McNemar <.001  Holm10 <.001  Holm-tier <.001
+GPT-5.6          changed 10/93 (11; 6–19)       N→V  1  V→N  9  McNemar .02    Holm10 .09    Holm-tier .06
+Gemini 3.1 Pro   changed 23/93 (25; 17–34)      N→V 13  V→N 10  McNemar .68    Holm10 >.99   Holm-tier >.99
+Claude Fable 5   changed 21/93 (23; 15–32)      N→V 11  V→N 10  McNemar >.99   Holm10 >.99   Holm-tier >.99
+
+== C accuracy CI + 原 Table 2（核對）==
+Qwen3-VL 4B      NF sens 31/39 (79; 64–89)    spec 40/54 (74; 61–84)      acc 71/93 (76; 67–84)    Holm <.001
+Qwen3-VL 4B      VF sens 1/39 (3; 0–13)       spec 54/54 (100; 93–100)    acc 55/93 (59; 49–69)    Holm .89
+Qwen3-VL 8B      NF sens 0/39 (0; 0–9)        spec 54/54 (100; 93–100)    acc 54/93 (58; 48–68)    Holm >.99
+Qwen3-VL 8B      VF sens 1/39 (3; 0–13)       spec 54/54 (100; 93–100)    acc 55/93 (59; 49–69)    Holm .89
+Qwen2.5-VL 7B    NF sens 22/39 (56; 41–71)    spec 33/54 (61; 48–73)      acc 55/93 (59; 49–69)    Holm .56
+Qwen2.5-VL 7B    VF sens 36/39 (92; 80–97)    spec 16/54 (30; 19–43)      acc 52/93 (56; 46–66)    Holm .04
+Lingshu-7B       NF sens 7/39 (18; 9–33)      spec 54/54 (100; 93–100)    acc 61/93 (66; 55–74)    Holm .008
+Lingshu-7B       VF sens 26/39 (67; 51–79)    spec 48/54 (89; 78–95)      acc 74/93 (80; 70–87)    Holm <.001
+Gemma 3 4B       NF sens 0/39 (0; 0–9)        spec 54/54 (100; 93–100)    acc 54/93 (58; 48–68)    Holm >.99
+Gemma 3 4B       VF sens 22/39 (56; 41–71)    spec 30/54 (56; 42–68)      acc 52/93 (56; 46–66)    Holm .89
+MedGemma 1 4B    NF sens 9/39 (23; 13–38)     spec 54/54 (100; 93–100)    acc 63/93 (68; 58–76)    Holm .001
+MedGemma 1 4B    VF sens 28/39 (72; 56–83)    spec 37/54 (69; 55–79)      acc 65/93 (70; 60–78)    Holm <.001
+MedGemma 1.5 4B  NF sens 0/39 (0; 0–9)        spec 54/54 (100; 93–100)    acc 54/93 (58; 48–68)    Holm >.99
+MedGemma 1.5 4B  VF sens 31/39 (79; 64–89)    spec 31/54 (57; 44–70)      acc 62/93 (67; 57–75)    Holm .003
+GPT-5.6          NF sens 9/39 (23; 13–38)     spec 54/54 (100; 93–100)    acc 63/93 (68; 58–76)    Holm <.001
+GPT-5.6          VF sens 17/39 (44; 29–59)    spec 54/54 (100; 93–100)    acc 71/93 (76; 67–84)    Holm <.001
+Gemini 3.1 Pro   NF sens 33/39 (85; 70–93)    spec 40/54 (74; 61–84)      acc 73/93 (78; 69–86)    Holm <.001
+Gemini 3.1 Pro   VF sens 32/39 (82; 67–91)    spec 42/54 (78; 65–87)      acc 74/93 (80; 70–87)    Holm <.001
+Claude Fable 5   NF sens 33/39 (85; 70–93)    spec 35/54 (65; 51–76)      acc 68/93 (73; 63–81)    Holm <.001
+Claude Fable 5   VF sens 33/39 (85; 70–93)    spec 36/54 (67; 53–78)      acc 69/93 (74; 64–82)    Holm <.001
+
+== B 每位病人一個 vessel（35 個）==
+組合數 524288
+Qwen3-VL 4B      NF spec(first) 25/35 (71; 55–84)      Holm <.001  | 全93題 Holm <.001  | 2000 抽：spec 範圍 22–29/35，結論同全樣本 100.0%
+Qwen3-VL 4B      VF spec(first) 35/35 (100; 90–100)    Holm >.99   | 全93題 Holm .89    | 2000 抽：spec 範圍 35–35/35，結論同全樣本 100.0%
+Qwen3-VL 8B      NF spec(first) 35/35 (100; 90–100)    Holm >.99   | 全93題 Holm >.99   | 2000 抽：spec 範圍 35–35/35，結論同全樣本 100.0%
+Qwen3-VL 8B      VF spec(first) 35/35 (100; 90–100)    Holm >.99   | 全93題 Holm .89    | 2000 抽：spec 範圍 35–35/35，結論同全樣本 100.0%
+Qwen2.5-VL 7B    NF spec(first) 19/35 (54; 38–70)      Holm >.99   | 全93題 Holm .56    | 2000 抽：spec 範圍 18–23/35，結論同全樣本 100.0%
+Qwen2.5-VL 7B    VF spec(first) 10/35 (29; 16–45)      Holm .12    | 全93題 Holm .04    | 2000 抽：spec 範圍 6–14/35，結論同全樣本 13.7%
+Lingshu-7B       NF spec(first) 35/35 (100; 90–100)    Holm .06    | 全93題 Holm .008   | 2000 抽：spec 範圍 35–35/35，結論同全樣本 0.0%
+Lingshu-7B       VF spec(first) 31/35 (89; 74–95)      Holm <.001  | 全93題 Holm <.001  | 2000 抽：spec 範圍 29–33/35，結論同全樣本 100.0%
+Gemma 3 4B       NF spec(first) 35/35 (100; 90–100)    Holm >.99   | 全93題 Holm >.99   | 2000 抽：spec 範圍 35–35/35，結論同全樣本 100.0%
+Gemma 3 4B       VF spec(first) 19/35 (54; 38–70)      Holm >.99   | 全93題 Holm .89    | 2000 抽：spec 範圍 14–22/35，結論同全樣本 100.0%
+MedGemma 1 4B    NF spec(first) 35/35 (100; 90–100)    Holm .02    | 全93題 Holm .001   | 2000 抽：spec 範圍 35–35/35，結論同全樣本 100.0%
+MedGemma 1 4B    VF spec(first) 24/35 (69; 52–81)      Holm .006   | 全93題 Holm <.001  | 2000 抽：spec 範圍 21–26/35，結論同全樣本 100.0%
+MedGemma 1.5 4B  NF spec(first) 35/35 (100; 90–100)    Holm >.99   | 全93題 Holm >.99   | 2000 抽：spec 範圍 35–35/35，結論同全樣本 100.0%
+MedGemma 1.5 4B  VF spec(first) 20/35 (57; 41–72)      Holm .009   | 全93題 Holm .003   | 2000 抽：spec 範圍 18–24/35，結論同全樣本 100.0%
+GPT-5.6          NF spec(first) 35/35 (100; 90–100)    Holm .003   | 全93題 Holm <.001  | 2000 抽：spec 範圍 35–35/35，結論同全樣本 100.0%
+GPT-5.6          VF spec(first) 35/35 (100; 90–100)    Holm <.001  | 全93題 Holm <.001  | 2000 抽：spec 範圍 35–35/35，結論同全樣本 100.0%
+Gemini 3.1 Pro   NF spec(first) 26/35 (74; 58–86)      Holm <.001  | 全93題 Holm <.001  | 2000 抽：spec 範圍 22–28/35，結論同全樣本 100.0%
+Gemini 3.1 Pro   VF spec(first) 27/35 (77; 61–88)      Holm <.001  | 全93題 Holm <.001  | 2000 抽：spec 範圍 24–30/35，結論同全樣本 100.0%
+Claude Fable 5   NF spec(first) 25/35 (71; 55–84)      Holm <.001  | 全93題 Holm <.001  | 2000 抽：spec 範圍 18–28/35，結論同全樣本 100.0%
+Claude Fable 5   VF spec(first) 24/35 (69; 52–81)      Holm <.001  | 全93題 Holm <.001  | 2000 抽：spec 範圍 19–29/35，結論同全樣本 100.0%
+
+== D base vs 醫療微調（答對與否，exact McNemar）==
+MedGemma 1 4B    vs Gemma 3 4B     NF: acc 63/93 vs 54/93; 微調對而基座錯 9，基座對而微調錯 0；McNemar .004
+MedGemma 1 4B    vs Gemma 3 4B     VF: acc 65/93 vs 52/93; 微調對而基座錯 23，基座對而微調錯 10；McNemar .04
+MedGemma 1.5 4B  vs Gemma 3 4B     NF: acc 54/93 vs 54/93; 微調對而基座錯 0，基座對而微調錯 0；McNemar >.99
+MedGemma 1.5 4B  vs Gemma 3 4B     VF: acc 62/93 vs 52/93; 微調對而基座錯 27，基座對而微調錯 17；McNemar .17
+Lingshu-7B       vs Qwen2.5-VL 7B  NF: acc 61/93 vs 55/93; 微調對而基座錯 22，基座對而微調錯 16；McNemar .42
+Lingshu-7B       vs Qwen2.5-VL 7B  VF: acc 74/93 vs 52/93; 微調對而基座錯 33，基座對而微調錯 11；McNemar .001
+
+== E commercial：同順序重測 vs 跨順序（同 50 題）==
+GPT-5.6          n=44 (nod 19) 重測改答 6/44 (14; 6–27) [N→V 1, V→N 5] | 跨順序改答 6/44 (14; 6–27) [N→V 0, V→N 6]
+Gemini 3.1 Pro   n=44 (nod 19) 重測改答 3/44 (7; 2–18) [N→V 1, V→N 2] | 跨順序改答 9/44 (20; 11–35) [N→V 5, V→N 4]
+Claude Fable 5   n=44 (nod 19) 重測改答 9/44 (20; 11–35) [N→V 6, V→N 3] | 跨順序改答 11/44 (25; 15–39) [N→V 7, V→N 4]
+
+== F commercial in_tokens ==
+GPT-5.6          NF in_tokens n=93 min 2220 max 2220
+GPT-5.6          VF in_tokens n=93 min 2220 max 2220
+Gemini 3.1 Pro   NF in_tokens n=93 min 9895 max 9895
+Gemini 3.1 Pro   VF in_tokens n=93 min 9895 max 9895
+Claude Fable 5   NF in_tokens n=93 min 2480 max 2480
+Claude Fable 5   VF in_tokens n=93 min 2480 max 2480

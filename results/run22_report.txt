@@ -1,0 +1,218 @@
+run 22 prompt 敏感度分析　（只讀收尾 CSV；第一個字判定；Holm：open 七個一組、commercial 三個一組、各順序分開）
+新檔列數：open 1302，commercial 558
+
+== 0 品管 ==
+未完成的臂：28
+  Q4_LIDC_N9term: 0/93
+  Q4_LIDC_N9termswap: 0/93
+  Q8_LIDC_N9term: 0/93
+  Q8_LIDC_N9termswap: 0/93
+  Q25_LIDC_N9term: 0/93
+  Q25_LIDC_N9termswap: 0/93
+  LS7_LIDC_N9term: 0/93
+  LS7_LIDC_N9termswap: 0/93
+  GM3_LIDC_N9term: 0/93
+  GM3_LIDC_N9termswap: 0/93
+  M1_LIDC_N9term: 0/93
+  M1_LIDC_N9termswap: 0/93
+  M15_LIDC_N9term: 0/93
+  M15_LIDC_N9termswap: 0/93
+  Q4_LIDC_N9form: 0/93
+  Q4_LIDC_N9formswap: 0/93
+  Q8_LIDC_N9form: 0/93
+  Q8_LIDC_N9formswap: 0/93
+  Q25_LIDC_N9form: 0/93
+  Q25_LIDC_N9formswap: 0/93
+  LS7_LIDC_N9form: 0/93
+  LS7_LIDC_N9formswap: 0/93
+  GM3_LIDC_N9form: 0/93
+  GM3_LIDC_N9formswap: 0/93
+  M1_LIDC_N9form: 0/93
+  M1_LIDC_N9formswap: 0/93
+  M15_LIDC_N9form: 0/93
+  M15_LIDC_N9formswap: 0/93
+prompt_sha1 不符：0
+commercial 模型識別碼不符：0
+第一個字與 parse() 不一致：0
+第一個字不是 Nodule／Vessel（未歸類，全部列出）：0
+
+== 1 每組 prompt 的 Table 2 ==
+
+-- 原 prompt（low-dose） --
+Model            order Sensitivity          Specificity            Accuracy             p disc | changed (N→V, V→N)  p order
+Qwen3-VL 4B      NF    31/39 (79; 64–89)    40/54 (74; 61–84)      71/93 (76; 67–84)    <.001  | 44 (44, 0)  <.001
+Qwen3-VL 4B      VF    1/39 (3; 0–13)       54/54 (100; 93–100)    55/93 (59; 49–69)    .89    | 
+Qwen3-VL 8B      NF    0/39 (0; 0–9)        54/54 (100; 93–100)    54/93 (58; 48–68)    >.99   | 1 (0, 1)  >.99
+Qwen3-VL 8B      VF    1/39 (3; 0–13)       54/54 (100; 93–100)    55/93 (59; 49–69)    .89    | 
+Qwen2.5-VL 7B    NF    22/39 (56; 41–71)    33/54 (61; 48–73)      55/93 (59; 49–69)    .56    | 31 (0, 31)  <.001
+Qwen2.5-VL 7B    VF    36/39 (92; 80–97)    16/54 (30; 19–43)      52/93 (56; 46–66)    .04    | 
+Lingshu-7B       NF    7/39 (18; 9–33)      54/54 (100; 93–100)    61/93 (66; 55–74)    .008   | 25 (0, 25)  <.001
+Lingshu-7B       VF    26/39 (67; 51–79)    48/54 (89; 78–95)      74/93 (80; 70–87)    <.001  | 
+Gemma 3 4B       NF    0/39 (0; 0–9)        54/54 (100; 93–100)    54/93 (58; 48–68)    >.99   | 46 (0, 46)  <.001
+Gemma 3 4B       VF    22/39 (56; 41–71)    30/54 (56; 42–68)      52/93 (56; 46–66)    .89    | 
+MedGemma 1 4B    NF    9/39 (23; 13–38)     54/54 (100; 93–100)    63/93 (68; 58–76)    .001   | 36 (0, 36)  <.001
+MedGemma 1 4B    VF    28/39 (72; 56–83)    37/54 (69; 55–79)      65/93 (70; 60–78)    <.001  | 
+MedGemma 1.5 4B  NF    0/39 (0; 0–9)        54/54 (100; 93–100)    54/93 (58; 48–68)    >.99   | 54 (0, 54)  <.001
+MedGemma 1.5 4B  VF    31/39 (79; 64–89)    31/54 (57; 44–70)      62/93 (67; 57–75)    .003   | 
+  ------------------------------------------------------------
+GPT-5.6          NF    9/39 (23; 13–38)     54/54 (100; 93–100)    63/93 (68; 58–76)    <.001  | 10 (1, 9)  .06
+GPT-5.6          VF    17/39 (44; 29–59)    54/54 (100; 93–100)    71/93 (76; 67–84)    <.001  | 
+Gemini 3.1 Pro   NF    33/39 (85; 70–93)    40/54 (74; 61–84)      73/93 (78; 69–86)    <.001  | 23 (13, 10)  >.99
+Gemini 3.1 Pro   VF    32/39 (82; 67–91)    42/54 (78; 65–87)      74/93 (80; 70–87)    <.001  | 
+Claude Fable 5   NF    33/39 (85; 70–93)    35/54 (65; 51–76)      68/93 (73; 63–81)    <.001  | 21 (11, 10)  >.99
+Claude Fable 5   VF    33/39 (85; 70–93)    36/54 (67; 53–78)      69/93 (74; 64–82)    <.001  | 
+
+-- v5nd（拿掉 low-dose） --
+Model            order Sensitivity          Specificity            Accuracy             p disc | changed (N→V, V→N)  p order
+Qwen3-VL 4B      NF    32/39 (82; 67–91)    42/54 (78; 65–87)      74/93 (80; 70–87)    <.001  | 43 (43, 0)  <.001
+Qwen3-VL 4B      VF    1/39 (3; 0–13)       54/54 (100; 93–100)    55/93 (59; 49–69)    .81    | 
+Qwen3-VL 8B      NF    0/39 (0; 0–9)        54/54 (100; 93–100)    54/93 (58; 48–68)    >.99   | 5 (0, 5)  .06
+Qwen3-VL 8B      VF    5/39 (13; 6–27)      54/54 (100; 93–100)    59/93 (63; 53–73)    .03    | 
+Qwen2.5-VL 7B    NF    22/39 (56; 41–71)    32/54 (59; 46–71)      54/93 (58; 48–68)    .59    | 34 (0, 34)  <.001
+Qwen2.5-VL 7B    VF    38/39 (97; 87–100)   14/54 (26; 16–39)      52/93 (56; 46–66)    .01    | 
+Lingshu-7B       NF    7/39 (18; 9–33)      54/54 (100; 93–100)    61/93 (66; 55–74)    .009   | 25 (0, 25)  <.001
+Lingshu-7B       VF    26/39 (67; 51–79)    48/54 (89; 78–95)      74/93 (80; 70–87)    <.001  | 
+Gemma 3 4B       NF    0/39 (0; 0–9)        54/54 (100; 93–100)    54/93 (58; 48–68)    >.99   | 47 (0, 47)  <.001
+Gemma 3 4B       VF    22/39 (56; 41–71)    29/54 (54; 41–66)      51/93 (55; 45–65)    .81    | 
+MedGemma 1 4B    NF    9/39 (23; 13–38)     53/54 (98; 90–100)     62/93 (67; 57–75)    .009   | 37 (0, 37)  <.001
+MedGemma 1 4B    VF    30/39 (77; 62–87)    37/54 (69; 55–79)      67/93 (72; 62–80)    <.001  | 
+MedGemma 1.5 4B  NF    0/39 (0; 0–9)        54/54 (100; 93–100)    54/93 (58; 48–68)    >.99   | 47 (0, 47)  <.001
+MedGemma 1.5 4B  VF    29/39 (74; 59–85)    36/54 (67; 53–78)      65/93 (70; 60–78)    <.001  | 
+  ------------------------------------------------------------
+GPT-5.6          NF    14/39 (36; 23–52)    54/54 (100; 93–100)    68/93 (73; 63–81)    <.001  | 5 (1, 4)  >.99
+GPT-5.6          VF    17/39 (44; 29–59)    54/54 (100; 93–100)    71/93 (76; 67–84)    <.001  | 
+Gemini 3.1 Pro   NF    33/39 (85; 70–93)    39/54 (72; 59–82)      72/93 (77; 68–85)    <.001  | 25 (12, 13)  >.99
+Gemini 3.1 Pro   VF    33/39 (85; 70–93)    38/54 (70; 57–81)      71/93 (76; 67–84)    <.001  | 
+Claude Fable 5   NF    34/39 (87; 73–94)    37/54 (69; 55–79)      71/93 (76; 67–84)    <.001  | 22 (11, 11)  >.99
+Claude Fable 5   VF    31/39 (79; 64–89)    34/54 (63; 50–75)      65/93 (70; 60–78)    <.001  | 
+
+-- v6term（換選項名詞） --
+Model            order Sensitivity          Specificity            Accuracy             p disc | changed (N→V, V→N)  p order
+Qwen3-VL 4B      NF    無資料
+Qwen3-VL 4B      VF    無資料
+Qwen3-VL 8B      NF    無資料
+Qwen3-VL 8B      VF    無資料
+Qwen2.5-VL 7B    NF    無資料
+Qwen2.5-VL 7B    VF    無資料
+Lingshu-7B       NF    無資料
+Lingshu-7B       VF    無資料
+Gemma 3 4B       NF    無資料
+Gemma 3 4B       VF    無資料
+MedGemma 1 4B    NF    無資料
+MedGemma 1 4B    VF    無資料
+MedGemma 1.5 4B  NF    無資料
+MedGemma 1.5 4B  VF    無資料
+  ------------------------------------------------------------
+GPT-5.6          NF    無資料
+GPT-5.6          VF    無資料
+Gemini 3.1 Pro   NF    無資料
+Gemini 3.1 Pro   VF    無資料
+Claude Fable 5   NF    無資料
+Claude Fable 5   VF    無資料
+
+-- v7form（換句型） --
+Model            order Sensitivity          Specificity            Accuracy             p disc | changed (N→V, V→N)  p order
+Qwen3-VL 4B      NF    無資料
+Qwen3-VL 4B      VF    無資料
+Qwen3-VL 8B      NF    無資料
+Qwen3-VL 8B      VF    無資料
+Qwen2.5-VL 7B    NF    無資料
+Qwen2.5-VL 7B    VF    無資料
+Lingshu-7B       NF    無資料
+Lingshu-7B       VF    無資料
+Gemma 3 4B       NF    無資料
+Gemma 3 4B       VF    無資料
+MedGemma 1 4B    NF    無資料
+MedGemma 1 4B    VF    無資料
+MedGemma 1.5 4B  NF    無資料
+MedGemma 1.5 4B  VF    無資料
+  ------------------------------------------------------------
+GPT-5.6          NF    無資料
+GPT-5.6          VF    無資料
+Gemini 3.1 Pro   NF    無資料
+Gemini 3.1 Pro   VF    無資料
+Claude Fable 5   NF    無資料
+Claude Fable 5   VF    無資料
+
+== 2 原 prompt 與新 prompt 的逐題比較（同模型、同順序）==
+格式：不同題數 (原N→新V, 原V→新N) / 可配對題數。open-weight temperature 0、決定性，差異＝措辭的效果。
+Qwen3-VL 4B      nd-NF: 3 (2, 1)  nd-VF: 0 (0, 0)  term-NF: —  term-VF: —  form-NF: —  form-VF: —
+Qwen3-VL 8B      nd-NF: 0 (0, 0)  nd-VF: 4 (0, 4)  term-NF: —  term-VF: —  form-NF: —  form-VF: —
+Qwen2.5-VL 7B    nd-NF: 1 (0, 1)  nd-VF: 6 (1, 5)  term-NF: —  term-VF: —  form-NF: —  form-VF: —
+Lingshu-7B       nd-NF: 0 (0, 0)  nd-VF: 4 (2, 2)  term-NF: —  term-VF: —  form-NF: —  form-VF: —
+Gemma 3 4B       nd-NF: 0 (0, 0)  nd-VF: 3 (1, 2)  term-NF: —  term-VF: —  form-NF: —  form-VF: —
+MedGemma 1 4B    nd-NF: 1 (0, 1)  nd-VF: 2 (0, 2)  term-NF: —  term-VF: —  form-NF: —  form-VF: —
+MedGemma 1.5 4B  nd-NF: 0 (0, 0)  nd-VF: 7 (7, 0)  term-NF: —  term-VF: —  form-NF: —  form-VF: —
+GPT-5.6          nd-NF: 9 (2, 7)  nd-VF: 4 (2, 2)  term-NF: —  term-VF: —  form-NF: —  form-VF: —
+Gemini 3.1 Pro   nd-NF: 17 (8, 9)  nd-VF: 31 (13, 18)  term-NF: —  term-VF: —  form-NF: —  form-VF: —
+Claude Fable 5   nd-NF: 23 (12, 11)  nd-VF: 20 (10, 10)  term-NF: —  term-VF: —  form-NF: —  form-VF: —
+
+-- commercial：重測改答 vs 拿掉 low-dose 的改答（同 44 題，nodule-first）--
+GPT-5.6          n=44 重測改答 6 (1, 5) | 原→v5nd 改答 4 (0, 4) /44；全 93 題 9 (2, 7) /93；vessel-first 全 93 題 4 (2, 2) /93
+Gemini 3.1 Pro   n=44 重測改答 3 (1, 2) | 原→v5nd 改答 10 (3, 7) /44；全 93 題 17 (8, 9) /93；vessel-first 全 93 題 31 (13, 18) /93
+Claude Fable 5   n=44 重測改答 9 (6, 3) | 原→v5nd 改答 11 (6, 5) /44；全 93 題 23 (12, 11) /93；vessel-first 全 93 題 20 (10, 10) /93
+
+== 3 主要發現是否重現 ==
+discrimination＝Fisher Holm p<.05；大量改答＝改答 ≥25 題；方向一致＝少數方向為 0 題（手稿：all in one direction）
+
+-- 原 prompt（low-dose） --
+  nodule-first discrimination：open 3/7 ['Qwen3-VL 4B', 'Lingshu-7B', 'MedGemma 1 4B']；commercial 3 ['GPT-5.6', 'Gemini 3.1 Pro', 'Claude Fable 5']
+  vessel-first discrimination：open 4/7 ['Qwen2.5-VL 7B', 'Lingshu-7B', 'MedGemma 1 4B', 'MedGemma 1.5 4B']；commercial 3 ['GPT-5.6', 'Gemini 3.1 Pro', 'Claude Fable 5']
+  改答 ≥25 題的 open-weight：6/7 ['Qwen3-VL 4B 44 (44, 0)', 'Qwen2.5-VL 7B 31 (0, 31)', 'Lingshu-7B 25 (0, 25)', 'Gemma 3 4B 46 (0, 46)', 'MedGemma 1 4B 36 (0, 36)', 'MedGemma 1.5 4B 54 (0, 54)']
+  原本全答 vessel 的三個（nodule-first）：Qwen3-VL 8B 93/93 vessel；Gemma 3 4B 93/93 vessel；MedGemma 1.5 4B 93/93 vessel
+  本組 nodule-first 全答 vessel 的 open-weight：['Qwen3-VL 8B', 'Gemma 3 4B', 'MedGemma 1.5 4B']
+
+-- v5nd（拿掉 low-dose） --
+  nodule-first discrimination：open 3/7 ['Qwen3-VL 4B', 'Lingshu-7B', 'MedGemma 1 4B']；commercial 3 ['GPT-5.6', 'Gemini 3.1 Pro', 'Claude Fable 5']
+  vessel-first discrimination：open 5/7 ['Qwen3-VL 8B', 'Qwen2.5-VL 7B', 'Lingshu-7B', 'MedGemma 1 4B', 'MedGemma 1.5 4B']；commercial 3 ['GPT-5.6', 'Gemini 3.1 Pro', 'Claude Fable 5']
+  改答 ≥25 題的 open-weight：6/7 ['Qwen3-VL 4B 43 (43, 0)', 'Qwen2.5-VL 7B 34 (0, 34)', 'Lingshu-7B 25 (0, 25)', 'Gemma 3 4B 47 (0, 47)', 'MedGemma 1 4B 37 (0, 37)', 'MedGemma 1.5 4B 47 (0, 47)']
+  原本全答 vessel 的三個（nodule-first）：Qwen3-VL 8B 93/93 vessel；Gemma 3 4B 93/93 vessel；MedGemma 1.5 4B 93/93 vessel
+  本組 nodule-first 全答 vessel 的 open-weight：['Qwen3-VL 8B', 'Gemma 3 4B', 'MedGemma 1.5 4B']
+
+-- v6term（換選項名詞） --
+  nodule-first discrimination：open 0/7 []；commercial 0 []
+  vessel-first discrimination：open 0/7 []；commercial 0 []
+  改答 ≥25 題的 open-weight：0/7 []
+  原本全答 vessel 的三個（nodule-first）：Qwen3-VL 8B 無資料；Gemma 3 4B 無資料；MedGemma 1.5 4B 無資料
+  本組 nodule-first 全答 vessel 的 open-weight：[]
+
+-- v7form（換句型） --
+  nodule-first discrimination：open 0/7 []；commercial 0 []
+  vessel-first discrimination：open 0/7 []；commercial 0 []
+  改答 ≥25 題的 open-weight：0/7 []
+  原本全答 vessel 的三個（nodule-first）：Qwen3-VL 8B 無資料；Gemma 3 4B 無資料；MedGemma 1.5 4B 無資料
+  本組 nodule-first 全答 vessel 的 open-weight：[]
+
+== 4 彙總：兩種順序之間改答題數 (N→V, V→N)；* = McNemar Holm p<.05 ==
+Model                       原 prompt                v5nd              v6term              v7form
+Qwen3-VL 4B              44 (44, 0)*         43 (43, 0)*                   —                   —
+Qwen3-VL 8B                 1 (0, 1)            5 (0, 5)                   —                   —
+Qwen2.5-VL 7B            31 (0, 31)*         34 (0, 34)*                   —                   —
+Lingshu-7B               25 (0, 25)*         25 (0, 25)*                   —                   —
+Gemma 3 4B               46 (0, 46)*         47 (0, 47)*                   —                   —
+MedGemma 1 4B            36 (0, 36)*         37 (0, 37)*                   —                   —
+MedGemma 1.5 4B          54 (0, 54)*         47 (0, 47)*                   —                   —
+GPT-5.6                    10 (1, 9)            5 (1, 4)                   —                   —
+Gemini 3.1 Pro           23 (13, 10)         25 (12, 13)                   —                   —
+Claude Fable 5           21 (11, 10)         22 (11, 11)                   —                   —
+
+== 附 A accuracy（答對題數／可歸類題數）==
+Qwen3-VL 4B      orig-NF:71/93  orig-VF:55/93  nd-NF:74/93  nd-VF:55/93  term-NF:—  term-VF:—  form-NF:—  form-VF:—
+Qwen3-VL 8B      orig-NF:54/93  orig-VF:55/93  nd-NF:54/93  nd-VF:59/93  term-NF:—  term-VF:—  form-NF:—  form-VF:—
+Qwen2.5-VL 7B    orig-NF:55/93  orig-VF:52/93  nd-NF:54/93  nd-VF:52/93  term-NF:—  term-VF:—  form-NF:—  form-VF:—
+Lingshu-7B       orig-NF:61/93  orig-VF:74/93  nd-NF:61/93  nd-VF:74/93  term-NF:—  term-VF:—  form-NF:—  form-VF:—
+Gemma 3 4B       orig-NF:54/93  orig-VF:52/93  nd-NF:54/93  nd-VF:51/93  term-NF:—  term-VF:—  form-NF:—  form-VF:—
+MedGemma 1 4B    orig-NF:63/93  orig-VF:65/93  nd-NF:62/93  nd-VF:67/93  term-NF:—  term-VF:—  form-NF:—  form-VF:—
+MedGemma 1.5 4B  orig-NF:54/93  orig-VF:62/93  nd-NF:54/93  nd-VF:65/93  term-NF:—  term-VF:—  form-NF:—  form-VF:—
+GPT-5.6          orig-NF:63/93  orig-VF:71/93  nd-NF:68/93  nd-VF:71/93  term-NF:—  term-VF:—  form-NF:—  form-VF:—
+Gemini 3.1 Pro   orig-NF:73/93  orig-VF:74/93  nd-NF:72/93  nd-VF:71/93  term-NF:—  term-VF:—  form-NF:—  form-VF:—
+Claude Fable 5   orig-NF:68/93  orig-VF:69/93  nd-NF:71/93  nd-VF:65/93  term-NF:—  term-VF:—  form-NF:—  form-VF:—
+
+== 附 B commercial in_tokens 與花費 ==
+GPT-5.6          nd      n=93 in_tokens 2218–2218  $1.56  api_fail 0  hard refusal 0
+GPT-5.6          ndswap  n=93 in_tokens 2218–2218  $1.50  api_fail 0  hard refusal 0
+Gemini 3.1 Pro   nd      n=93 in_tokens 9892–9892  $3.05  api_fail 0  hard refusal 0
+Gemini 3.1 Pro   ndswap  n=93 in_tokens 9892–9892  $3.07  api_fail 0  hard refusal 0
+Claude Fable 5   nd      n=93 in_tokens 2476–2476  $3.30  api_fail 0  hard refusal 0
+Claude Fable 5   ndswap  n=93 in_tokens 2476–2476  $3.37  api_fail 0  hard refusal 0
+本次花費（依廠商）：anthropic $6.67，google $6.12，openai $3.07；合計 $15.85
