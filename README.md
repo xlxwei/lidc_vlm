@@ -25,10 +25,10 @@ This repository contains the experiments reported in the paper. Nothing here com
 | `results/frontier_raw/` | Archived request and response of every call to a commercial model |
 | `results/run20_noise_hand_verdicts.csv`, `results/noise_statement_verdicts.csv`, `results/noimage_hand_verdicts.csv` | Radiologist's classifications for the original wording |
 | `results/v011_tables.txt` | Output of `33_tables_v011.py` as used for the paper |
-| `results/v011_effect_size.txt` | Output of `34_effect_size_v011.py`: Youden's J with patient-level bootstrap 95% CIs, and differences in accuracy between base and fine-tuned models |
+| `results/v011_effect_size.txt` | Output of `34_effect_size_v011.py`: the Youden index with patient-level bootstrap 95% CIs, and differences in accuracy between base and fine-tuned models |
 | `results/v011_power.txt` | Output of `36_power_v011.py`: simulated power of the Fisher test for 39 nodules and 54 vessels (Methods, sample size) |
 | `results/v011_acquisition.txt` | Output of `35_acquisition_v011.py`: scanner model, reconstruction kernel, and tube current of the 48 scans (Table 1; needs the DICOM files) |
-| `figs/` | Figure 1, Figure 2 (`fig2_v011_roc`), and the scripts for Figure 2 |
+| `figs/` | Figure 1 (`fig1_v011_nine_slices`), Figure 2 (`fig2_v011_forest`), and the scripts that draw them |
 | `MODELS.md` | Model files, checksums, and software versions |
 
 ## Reproducing the tables
@@ -43,10 +43,10 @@ This gives Table 2 (sensitivity, specificity, accuracy, the tests of discriminat
 
 ```bash
 python 34_effect_size_v011.py
-python figs/make_fig2_v011_roc.py
+python figs/make_fig2_v011_forest.py
 ```
 
-`34_effect_size_v011.py` gives Youden's J for each model and order with 95% CIs from bootstrap resampling of patients, and the differences in accuracy between each fine-tuned model and its base model. `figs/make_fig2_v011_roc.py` draws Figure 2 after checking its counts against Table 2.
+`34_effect_size_v011.py` gives the Youden index for each model and order with 95% CIs from bootstrap resampling of patients, and the differences in accuracy between each fine-tuned model and its base model. `figs/make_fig2_v011_forest.py` draws Figure 2 after checking its counts against Table 2 and its Youden index values against the counts. `figs/make_fig1_v011.py` draws Figure 1 from the images in `images/ct/`.
 
 ## Two wordings of the question
 

@@ -17,8 +17,8 @@ CODE=['lidc_compat.py','lidc_render.py','01_build_candidate_pool.py','02_select_
  '28_reanalysis_v10.py','29_table3_and_audit.py','30_analyze_run22.py','31_analyze_run23.py','33_tables_v011.py','34_effect_size_v011.py','35_acquisition_v011.py','36_power_v011.py',
  'archive_verify_models.py','redact_raw.py','make_release_v10.py']
 for f in CODE: cp(f)
-cp('figs/make_fig2_v09.py'); cp('figs/make_fig2_v011_roc.py')
-for f in ['fig1_example_stimuli.png','fig2_v09_option_order.png','fig2_v09_option_order.pdf','fig2_v011_option_order.png','fig2_v011_option_order.pdf','fig2_v011_roc.png','fig2_v011_roc.pdf']: cp('figs/out/'+f)
+cp('figs/make_fig2_v09.py'); cp('figs/make_fig2_v011_roc.py'); cp('figs/make_fig2_v011_forest.py'); cp('figs/make_fig1_v011.py')
+for f in ['fig1_example_stimuli.png','fig2_v09_option_order.png','fig2_v09_option_order.pdf','fig2_v011_option_order.png','fig2_v011_option_order.pdf','fig2_v011_roc.png','fig2_v011_roc.pdf','fig2_v011_forest.png','fig2_v011_forest.pdf','fig1_v011_nine_slices.png','fig1_v011_nine_slices.pdf']: cp('figs/out/'+f)
 # 2 manifest
 for f in ['patch_meta.csv','patch_meta_control.csv','patch_meta_control_noimg.csv','subset_canon104.txt','subset_control.txt','subset_control_noimg.txt',
           'foil_adjudication.csv','foil_candidates.csv','selected_nodules.csv','series_to_download.txt','download_log.csv']:
