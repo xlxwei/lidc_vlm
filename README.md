@@ -21,14 +21,14 @@ This repository contains the experiments reported in the paper. Nothing here com
 | `results/run23_noise_open.csv`, `results/run23_noimg_open.csv` | Replies of the open-weight models to noise images and with no image (final wording; Table 3) |
 | `results/run23_control_frontier.csv` | Replies of the commercial models to noise images and with no image, ten calls per order (final wording; Table 3) |
 | `results/run23_noise_noimg_hand_verdicts.csv`, `results/run23_noise_statement_verdicts.csv` | Radiologist's classification of the 180 commercial replies and of the 31 replies containing the word "noise" (final wording) |
-| `results/lidc_roi_results.csv`, `results/frontier_results.csv`, `results/control_stimuli_results.csv`, `results/control_noimg_fulltext.csv`, `results/frontier_control_results.csv` | The same experiments with the original wording ("low-dose"); supplement S8 |
+| `results/lidc_roi_results.csv`, `results/frontier_results.csv`, `results/control_stimuli_results.csv`, `results/control_noimg_fulltext.csv`, `results/frontier_control_results.csv` | The same experiments with the original wording ("low-dose"); Supplemental Methods and Tables S3–S5 |
 | `results/frontier_raw/` | Archived request and response of every call to a commercial model |
 | `results/run20_noise_hand_verdicts.csv`, `results/noise_statement_verdicts.csv`, `results/noimage_hand_verdicts.csv` | Radiologist's classifications for the original wording |
 | `results/v011_tables.txt` | Output of `33_tables_v011.py` as used for the paper |
 | `results/v011_effect_size.txt` | Output of `34_effect_size_v011.py`: the Youden index with patient-level bootstrap 95% CIs, and differences in accuracy between base and fine-tuned models |
 | `results/v011_power.txt` | Output of `36_power_v011.py`: simulated power of the Fisher test for 39 nodules and 54 vessels (Methods, sample size) |
-| `results/v011_acquisition.txt` | Output of `35_acquisition_v011.py`: scanner model, reconstruction kernel, and tube current of the 48 scans (Table 1; needs the DICOM files) |
-| `figs/` | Figure 1 (`fig1_v011_nine_slices`), Figure 2 (`fig2_v011_forest`), and the scripts that draw them |
+| `results/v011_acquisition.txt` | Output of `35_acquisition_v011.py`: scanner model, reconstruction kernel, and tube current of the 48 scans, and Table 1 by structure (needs the DICOM files) |
+| `figs/` | Figure 1 (`fig1_ajr_flow`, selection of the structures), Figure 2 (`fig1_v011_nine_slices`), Figure 3 (`fig2_v011_forest`), and the scripts that draw them |
 | `MODELS.md` | Model files, checksums, and software versions |
 
 ## Reproducing the tables
@@ -39,14 +39,15 @@ Python 3 with `scipy` is required.
 python 33_tables_v011.py
 ```
 
-This gives Table 2 (sensitivity, specificity, accuracy, the tests of discrimination and of option order), the analysis with one vessel per patient, the comparison of base and fine-tuned models, the repeatability of the commercial models, and Table 3. `30_analyze_run22.py` compares the two wordings of the question (supplement S8); `28_reanalysis_v10.py` and `29_table3_and_audit.py` give the same tables for the original wording.
+This gives Table 2 (sensitivity, specificity, accuracy, the tests of discrimination and of option order), the analysis with one vessel per patient, the comparison of base and fine-tuned models, the repeatability of the commercial models, and Table 3. `30_analyze_run22.py` compares the two wordings of the question (Supplemental Methods, Results With the Original Wording); `28_reanalysis_v10.py` and `29_table3_and_audit.py` give the same tables for the original wording.
 
 ```bash
 python 34_effect_size_v011.py
 python figs/make_fig2_v011_forest.py
+python figs/make_fig1_flow_ajr.py
 ```
 
-`34_effect_size_v011.py` gives the Youden index for each model and order with 95% CIs from bootstrap resampling of patients, and the differences in accuracy between each fine-tuned model and its base model. `figs/make_fig2_v011_forest.py` draws Figure 2 after checking its counts against Table 2 and its Youden index values against the counts. `figs/make_fig1_v011.py` draws Figure 1 from the images in `images/ct/`.
+`34_effect_size_v011.py` gives the Youden index for each model and order with 95% CIs from bootstrap resampling of patients, and the differences in accuracy between each fine-tuned model and its base model. `figs/make_fig2_v011_forest.py` draws Figure 3 after checking its counts against Table 2 and its Youden index values against the counts. `figs/make_fig1_v011.py` draws Figure 2 from the images in `images/ct/`. `figs/make_fig1_flow_ajr.py` draws Figure 1 from the files in `manifest/` and checks each count; it needs Graphviz (`dot`).
 
 ## Two wordings of the question
 

@@ -4,8 +4,12 @@
 步驟：複製程式 → 篩選結果列 → 複製並除污 commercial 原始封存 → 複製影像 → 寫門面檔 → 消毒自檢 → 在 release 內重跑分析核對。"""
 import csv, os, re, shutil, subprocess, sys, glob, hashlib, collections
 ROOT=os.path.dirname(os.path.abspath(__file__)); R=os.path.join(ROOT,'release_v010')
-if os.path.exists(R): shutil.rmtree(R)
-for d in ['manifest','results','prompts','figs/out','images/ct','docs']: os.makedirs(os.path.join(R,d))
+# 清空 release_v010/ 但保留 .git（公開 repo 的本機 clone）
+if os.path.exists(R):
+    for x in os.listdir(R):
+        if x=='.git': continue
+        y=os.path.join(R,x); shutil.rmtree(y) if os.path.isdir(y) and not os.path.islink(y) else os.remove(y)
+for d in ['manifest','results','prompts','figs/out','images/ct','docs']: os.makedirs(os.path.join(R,d),exist_ok=True)
 RD=lambda p: list(csv.DictReader(open(os.path.join(ROOT,p))))
 OPEN=['Q4','Q8','Q25','LS7','GM3','M1','M15']; COM=['GPT56','GM31P','FAB5']
 def cp(src,dst=None):
@@ -17,11 +21,11 @@ CODE=['lidc_compat.py','lidc_render.py','01_build_candidate_pool.py','02_select_
  '28_reanalysis_v10.py','29_table3_and_audit.py','30_analyze_run22.py','31_analyze_run23.py','33_tables_v011.py','34_effect_size_v011.py','35_acquisition_v011.py','36_power_v011.py',
  'archive_verify_models.py','redact_raw.py','make_release_v10.py']
 for f in CODE: cp(f)
-cp('figs/make_fig2_v09.py'); cp('figs/make_fig2_v011_roc.py'); cp('figs/make_fig2_v011_forest.py'); cp('figs/make_fig1_v011.py')
-for f in ['fig1_example_stimuli.png','fig2_v09_option_order.png','fig2_v09_option_order.pdf','fig2_v011_option_order.png','fig2_v011_option_order.pdf','fig2_v011_roc.png','fig2_v011_roc.pdf','fig2_v011_forest.png','fig2_v011_forest.pdf','fig1_v011_nine_slices.png','fig1_v011_nine_slices.pdf']: cp('figs/out/'+f)
+cp('figs/make_fig2_v09.py'); cp('figs/make_fig2_v011_roc.py'); cp('figs/make_fig2_v011_forest.py'); cp('figs/make_fig1_v011.py'); cp('figs/make_fig1_flow_ajr.py')
+for f in ['fig1_example_stimuli.png','fig2_v09_option_order.png','fig2_v09_option_order.pdf','fig2_v011_option_order.png','fig2_v011_option_order.pdf','fig2_v011_roc.png','fig2_v011_roc.pdf','fig2_v011_forest.png','fig2_v011_forest.pdf','fig1_v011_nine_slices.png','fig1_v011_nine_slices.pdf','fig1_ajr_flow.png','fig1_ajr_flow.pdf']: cp('figs/out/'+f)
 # 2 manifest
 for f in ['patch_meta.csv','patch_meta_control.csv','patch_meta_control_noimg.csv','subset_canon104.txt','subset_control.txt','subset_control_noimg.txt',
-          'foil_adjudication.csv','foil_candidates.csv','selected_nodules.csv','series_to_download.txt','download_log.csv']:
+          'foil_adjudication.csv','foil_candidates.csv','foils_for_adjudication.csv','candidate_nodules.csv','selected_nodules.csv','series_to_download.txt','download_log.csv']:
     if os.path.exists(os.path.join(ROOT,'manifest',f)): cp('manifest/'+f)
 cp('patches_control_sha256.txt','manifest/patches_control_sha256.txt')
 canon=[l.strip() for l in open(os.path.join(ROOT,'manifest/subset_canon104.txt')) if l.strip()]
